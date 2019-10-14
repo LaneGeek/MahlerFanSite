@@ -16,5 +16,8 @@ namespace MahlerFanSite.Models
             Authors = new List<Author>();
             Reviews = new List<Review>();
         }
+
+        public void AddAuthor(Author author) => Authors.Add(author);
+        public void AddReview(Review review) => Reviews.Add(review);
     }
 }
