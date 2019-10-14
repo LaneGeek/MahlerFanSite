@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using MahlerFanSite.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http2.HPack;
 
 namespace MahlerFanSite.Controllers
 {
@@ -27,7 +26,7 @@ namespace MahlerFanSite.Controllers
         public IActionResult Books()
         {
             List<Book> books = BookRepository.Books;
-            return View((books));
+            return View(books);
         }
 
         public IActionResult Links() => View();

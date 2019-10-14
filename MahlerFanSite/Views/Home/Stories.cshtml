@@ -1,22 +1,17 @@
-﻿@{
+﻿@model List<Story>
+@{
     ViewData["Title"] = "Stories";
 }
 
 <div class="text-center">
     <h1 class="display-4">Mahler Stories</h1>
-    <p>Great stories about Gustav Mahler are on this page.</p>
-    <form method="post">
-        <div>
-            <label>Write your story about Gustav Mahler:</label>
-        </div>
-        <div>
-            <input />
-        </div>
-        <div>
-            <button type="submit">
-                Submit Story
-            </button>
-        </div>
-        
-    </form>
+    <p>Below are some great stories about Gustav Mahler:-</p>
+    @foreach (Story story in Model)
+    {
+        @story.Text<br />
+        @story.PublishedDate<br />
+        @story.StoryId<br /><br />
+    }
+    <br />
+    <a href="AddStory">Add Your Own Story About Mahler</a>
 </div>
