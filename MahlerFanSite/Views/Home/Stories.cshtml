@@ -8,9 +8,14 @@
     <p>Below are some great stories about Gustav Mahler:-</p>
     @foreach (Story story in Model)
     {
+        <h2>Story</h2>
         @story.Text<br />
+        <h4>Date of story</h4>
         @story.PublishedDate<br />
-        @story.StoryId<br /><br />
+        <h4>Story ID</h4>
+        @story.StoryId<br /><br /><br />
+        <h4>Comments on this tory</h4>
+                             @if (story.Comments.Count > 0)
     }
     <br/>
     <a href="AddStory">Add Your Own Story About Mahler</a>

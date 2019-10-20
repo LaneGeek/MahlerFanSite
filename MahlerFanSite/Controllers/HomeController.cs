@@ -12,26 +12,28 @@ namespace MahlerFanSite.Controllers
             // Some stories to fill our repository for testing
             if (StoryRepository.Stories.Count == 0)
             {
-                Story story = new Story()
+                Story story = new Story
                 {
                     StoryId = 1,
                     Text = "Mahler once slept the whole day!",
                     PublishedDate = new DateTime(2012, 6, 12)
                 };
                 StoryRepository.AddStory(story);
-                story = new Story()
+                story = new Story
                 {
                     StoryId = 2,
                     Text = "I met Mahler once!",
                     PublishedDate = new DateTime(2002, 6, 12)
                 };
                 StoryRepository.AddStory(story);
-                story = new Story()
+                story = new Story
                 {
                     StoryId = 3,
-                    Text = "Once upon a tie...",
+                    Text = "Once upon a time...",
                     PublishedDate = new DateTime(2012, 11, 12)
                 };
+                story.AddComment(new Comment { Text = "Sad story :(", Name = "John" });
+                story.AddComment(new Comment { Text = "Fake story!", Name = "Donald" });
                 StoryRepository.AddStory(story);
             }
         }

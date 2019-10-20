@@ -11,5 +11,13 @@ namespace MahlerFanSite.Models
         public string Text { get; set; }
         public DateTime PublishedDate { get; set; }
         public User Author { get; set; }
+        public List<Comment> Comments { get; }
+
+        public Story()
+        {
+            Comments = new List<Comment>();
+        }
+
+        public void AddComment(Comment comment) => Comments.Add(comment);
     }
 }
