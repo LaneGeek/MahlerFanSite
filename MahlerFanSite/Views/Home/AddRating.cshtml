@@ -1,0 +1,14 @@
+﻿@model String
+@{
+    ViewData["Title"] = "AddRating";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Add Rating for <em>@Model</em></h1>
+
+    <form method="post">
+        <label for="rating">How many stars do you want to give to this story</label>
+        <input name="rating" />
+        <input type="submit" value="Add" />
+    </form>
+</div>

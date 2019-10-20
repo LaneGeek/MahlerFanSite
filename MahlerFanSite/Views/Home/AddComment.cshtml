@@ -1,0 +1,16 @@
+﻿@model String
+@{
+    ViewData["Title"] = "AddComment";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Add Comment for <em>@Model</em></h1>
+
+    <form method="post">
+        <label for="text">Your comment about this story</label>
+        <input name="text" />
+        <label for="name">Your name</label>
+        <input name="name" />
+        <input type="submit" value="Add" />
+    </form>
+</div>

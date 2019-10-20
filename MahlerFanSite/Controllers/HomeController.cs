@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using MahlerFanSite.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace MahlerFanSite.Controllers
                     Text = "Mahler once slept the whole day!",
                     PublishedDate = new DateTime(2012, 6, 12)
                 };
+                story.AddRating(4);
                 StoryRepository.AddStory(story);
                 story = new Story
                 {
@@ -34,6 +36,8 @@ namespace MahlerFanSite.Controllers
                 };
                 story.AddComment(new Comment { Text = "Sad story :(", Name = "John" });
                 story.AddComment(new Comment { Text = "Fake story!", Name = "Donald" });
+                story.AddRating(5);
+                story.AddRating(0);
                 StoryRepository.AddStory(story);
             }
         }
@@ -57,13 +61,38 @@ namespace MahlerFanSite.Controllers
         [HttpPost]
         public RedirectToActionResult AddStory(string text, string pubDate, string storyId)
         {
-            Story story = new Story()
+            Story story = new Story
             {
                 Text = text,
                 PublishedDate = DateTime.Parse(pubDate),
                 StoryId = Int32.Parse(storyId)
             };
             StoryRepository.AddStory(story);
+            return RedirectToAction("Stories");
+        }
+
+        public IActionResult AddComment(string storyText) => View("AddComment", HttpUtility.HtmlDecode(storyText));
+
+        [HttpPost]
+        public RedirectToActionResult AddComment(string storyText, string text, string name)
+        {
+            Comment comment = new Comment
+            {
+                Text = text,
+                Name = name
+            };
+            Story story = StoryRepository.GetStoryByText(storyText);
+            story.AddComment(comment);
+            return RedirectToAction("Stories");
+        }
+
+        public IActionResult AddRating(string storyText) => View("AddRating", HttpUtility.HtmlDecode(storyText));
+
+        [HttpPost]
+        public RedirectToActionResult AddRating(string storyText, string rating)
+        {
+            Story story = StoryRepository.GetStoryByText(storyText);
+            story.AddRating(Int32.Parse(rating));
             return RedirectToAction("Stories");
         }
     }

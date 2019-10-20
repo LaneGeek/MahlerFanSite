@@ -9,5 +9,7 @@ namespace MahlerFanSite.Models
         public static List<Story> Stories => _stories;
 
         public static void AddStory(Story story) => Stories.Add(story);
+
+        public static Story GetStoryByText(string text) => _stories.Find(a => a.Text == text);
     }
 }
