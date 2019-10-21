@@ -1,5 +1,4 @@
-﻿
-namespace MahlerFanSite.Models
+﻿namespace MahlerFanSite.Models
 {
     public class Comment
     {

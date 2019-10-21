@@ -11,7 +11,7 @@ namespace MahlerFanSite.Controllers
         public HomeController()
         {
             // Some stories to fill our repository for testing
-            if (StoryRepository.Stories.Count == 0)
+            if (StoryRepository.IsEmpty)
             {
                 Story story = new Story
                 {
@@ -34,8 +34,8 @@ namespace MahlerFanSite.Controllers
                     Text = "Once upon a time...",
                     PublishedDate = new DateTime(2012, 11, 12)
                 };
-                story.AddComment(new Comment { Text = "Sad story :(", Name = "John" });
-                story.AddComment(new Comment { Text = "Fake story!", Name = "Donald" });
+                story.AddComment(new Comment {Text = "Sad story :(", Name = "John"});
+                story.AddComment(new Comment {Text = "Fake story! Sad!", Name = "Donald"});
                 story.AddRating(5);
                 story.AddRating(0);
                 StoryRepository.AddStory(story);
@@ -55,7 +55,7 @@ namespace MahlerFanSite.Controllers
 
             return View("Stories", stories);
         }
-        
+
         public IActionResult AddStory() => View();
 
         [HttpPost]
@@ -76,11 +76,7 @@ namespace MahlerFanSite.Controllers
         [HttpPost]
         public RedirectToActionResult AddComment(string storyText, string text, string name)
         {
-            Comment comment = new Comment
-            {
-                Text = text,
-                Name = name
-            };
+            Comment comment = new Comment {Text = text, Name = name};
             Story story = StoryRepository.GetStoryByText(storyText);
             story.AddComment(comment);
             return RedirectToAction("Stories");

@@ -9,5 +9,7 @@ namespace MahlerFanSite.Models
         public static List<Book> Books => _books;
 
         public static void AddBook(Book book) => Books.Add(book);
+
+        public static bool IsEmpty => Books.Count == 0;
     }
 }

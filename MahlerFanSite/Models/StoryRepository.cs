@@ -10,6 +10,8 @@ namespace MahlerFanSite.Models
 
         public static void AddStory(Story story) => Stories.Add(story);
 
-        public static Story GetStoryByText(string text) => _stories.Find(a => a.Text == text);
+        public static Story GetStoryByText(string text) => _stories.Find(x => x.Text == text);
+
+        public static bool IsEmpty => Stories.Count == 0;
     }
 }

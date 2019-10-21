@@ -1,5 +1,3 @@
-using System;
-
 namespace MahlerFanSite.Models
 {
     public class ErrorViewModel
