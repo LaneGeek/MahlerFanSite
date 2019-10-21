@@ -10,7 +10,7 @@ namespace MahlerFanSite.Controllers
         public SourcesController()
         {
             // Some books to fill our repository for testing
-            if (BookRepository.IsEmpty)
+            if (BookRepository.Books.IsEmpty())
             {
                 Book book = new Book
                 {
@@ -36,7 +36,7 @@ namespace MahlerFanSite.Controllers
             }
 
             // Some links to fill our repository for testing
-            if (LinkRepository.IsEmpty)
+            if (LinkRepository.Links.IsEmpty())
             {
                 Link link = new Link
                 {

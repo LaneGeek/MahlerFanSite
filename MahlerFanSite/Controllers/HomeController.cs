@@ -11,7 +11,7 @@ namespace MahlerFanSite.Controllers
         public HomeController()
         {
             // Some stories to fill our repository for testing
-            if (StoryRepository.IsEmpty)
+            if (StoryRepository.Stories.IsEmpty())
             {
                 Story story = new Story
                 {
