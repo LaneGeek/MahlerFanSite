@@ -12,7 +12,7 @@
         @story.Text<br />
         <h4>Date of story: @story.PublishedDate</h4>
         <h4>Story ID: @story.StoryId</h4>
-        @if (story.Comments.Count > 0)
+        @if (story.Comments.IsNotEmpty())
         {
             <h4>This story has these comments:-</h4>
             @foreach (Comment comment in story.Comments)
@@ -26,15 +26,16 @@
         }
         <a asp-action="AddComment" asp-route-storyText="@story.Text">Comment this story</a>
         <br/>
-        @if (story.Ratings.Count > 0)
+        @if (story.Ratings.IsNotEmpty())
         {
-            <h4>This story has had these ratings. A total of @story.Ratings.Count ratings as follows:-</h4>
+            <h4>This story has a total of @story.Ratings.Count ratings with an average rating of @story.Ratings.Average() stars:-</h4>
             @foreach (int rating in story.Ratings)
             {
                 <em>@rating</em>
                 <em> Stars </em>
             }
         }
+        <br />
         <a asp-action="AddRating" asp-route-storyText="@story.Text">Rate this story</a>
         <br /><br /><br />
     }
