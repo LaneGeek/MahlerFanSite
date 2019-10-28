@@ -42,7 +42,13 @@ namespace MahlerFanSite.Controllers
             }
         }
 
-        public IActionResult Index() => View();
+        public IActionResult Index()
+        {
+            // Using ViewBag to send today's date
+            String today = DateTime.Today.ToString("D");
+            ViewBag.Date = today;
+            return View();
+        }
 
         public IActionResult History() => View();
 
@@ -61,6 +67,7 @@ namespace MahlerFanSite.Controllers
         [HttpPost]
         public RedirectToActionResult AddStory(string text, string pubDate, string storyId)
         {
+            ViewBag.FormType = "Add a story";
             Story story = new Story
             {
                 Text = text,
