@@ -2,10 +2,19 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome To Mahler Fans</h1>
-    <p>We are fans of the great composer Gustav Mahler, an Austro-Bohemian Romantic composer, and one of the leading conductors of his generation. As a composer he acted as a bridge between the 19th century Austro-German tradition and the modernism of the early 20th century.</p>
-    <p><a asp-action="History">History of Gustav Mahler</a></p>
-    <p><a asp-action="Stories">Stories about Gustav Mahler</a></p>
-    <p>The date today is @ViewBag.Date</p>
+<h1 class="display-5">Welcome To Mahler Fans</h1>
+<p class="lead">We are fans of the great composer Gustav Mahler, an Austro-Bohemian Romantic composer, and one of the leading conductors of his generation. As a composer he acted as a bridge between the 19th century Austro-German tradition and the modernism of the early 20th century.</p>
+<hr class="my-4">
+<div class="text-center" >
+    <p class="lead">Read about the history of Gustav Mahler.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" asp-action="History" role="button">History</a>
+    </p>
+    <hr class="my-4">
+    <p class="lead">Read stories of Gustav Mahler.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" asp-action="Stories" role="button">Stories</a>
+    </p>
+    <hr class="my-4">
+    <p class="text-info"><em>The date today is @ViewBag.Date</em></p>
 </div>

@@ -1,10 +1,18 @@
 ﻿@{
-    ViewData["Title"] = "Sources Home Page";
+    ViewData["Title"] = "Sources";
 }
 
+<h1 class="display-5">Sources About Mahler</h1>
+<p class="lead">On this page are great sources. See the sources below.</p>
+<hr class="my-4">
 <div class="text-center">
-    <h1 class="display-4">Sources About Mahler</h1>
-    <p>On this page are great sources. See the sources below:-</p>
-    <p><a asp-action="Books">Books about Gustav Mahler</a></p>
-    <p><a asp-action="Links">Links about Gustav Mahler</a></p>
+    <p class="lead">Books about Gustav Mahler.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" asp-action="Books" role="button">Books</a>
+    </p>
+    <hr class="my-4">
+    <p class="lead">Links about Gustav Mahler.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" asp-action="Links" role="button">Links</a>
+    </p>
 </div>

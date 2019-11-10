@@ -1,13 +1,18 @@
 ﻿@model List<Link>
+
 @{
     ViewData["Title"] = "Links";
 }
 
+<h1 class="display-5">Links About Mahler</h1>
+<p class="lead">Below are some great links about Gustav Mahler.</p>
 <div class="text-center">
-    <h1 class="display-4">Mahler Links</h1>
-    <p>Below are some great links about Gustav Mahler:-</p>
     @foreach (Link link in Model)
     {
-        <p><a href="@link.Url">@link.Description</a></p>
+        <hr class="my-4">
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="@link.Url" role="button">@link.Description</a>
+        </p>
     }
+    <hr class="my-4">
 </div>

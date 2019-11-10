@@ -1,44 +1,50 @@
 ﻿@model List<Story>
+
 @{
     ViewData["Title"] = "Stories";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Mahler Stories</h1>
-    <p>Below are some great stories about Gustav Mahler:-</p>
+<h1 class="display-5">Stories About Mahler</h1>
+<p class="lead">Below are some great stories about Gustav Mahler.</p>
+<div style="margin-bottom: 20px; background-color: beige; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
     @foreach (Story story in Model)
     {
-        <h2>Story</h2>
-        @story.Text<br />
-        <h4>Date of story: @story.PublishedDate</h4>
-        <h4>Story ID: @story.StoryId</h4>
-        @if (story.Comments.IsNotEmpty())
-        {
-            <h4>This story has these comments:-</h4>
-            @foreach (Comment comment in story.Comments)
+        <div class="lead" style="margin-bottom: 20px; background-color: #fff0ff; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+            <em>Story:</em><br />@story.Text<br />
+            <hr class="my-4">
+            <em>Date of story:</em><br />@story.PublishedDate.ToString("dddd, dd MMMM yyyy")<br />
+            <hr class="my-4">
+            <em>Story ID: </em>@story.StoryId<br />
+            @if (story.Comments.IsNotEmpty())
             {
-                <p>
-                    @comment.Name
-                    <em> says </em>
-                    @comment.Text<br />
-                </p>
+                <hr class="my-4">
+                <p>This story has these comments:</p>
+                @foreach (Comment comment in story.Comments)
+                {
+                    <p class="text-primary">
+                        @comment.Name
+                        <em> says </em>
+                        @comment.Text<br />
+                    </p>
+                }
             }
-        }
-        <a asp-action="AddComment" asp-route-storyText="@story.Text">Comment this story</a>
-        <br/>
-        @if (story.Ratings.IsNotEmpty())
-        {
-            <h4>This story has a total of @story.Ratings.Count ratings with an average rating of @story.Ratings.Average() stars:-</h4>
-            @foreach (int rating in story.Ratings)
+            <p class="lead text-center">
+                <a class="btn btn-primary btn-lg" asp-action="AddComment" asp-route-storyText="@story.Text" role="button">Comment This Story</a>
+            </p>
+            @if (story.Ratings.IsNotEmpty())
             {
-                <em>@rating</em>
-                <em> Stars </em>
+                <hr class="my-4">
+                <p>This story has a total of @story.Ratings.Count ratings with an average rating of @story.Ratings.Average() stars:-</p>
+                @foreach (int rating in story.Ratings)
+                {
+                    <p class="text-primary">
+                        @rating Stars
+                    </p>
+                }
             }
-        }
-        <br />
-        <a asp-action="AddRating" asp-route-storyText="@story.Text">Rate this story</a>
-        <br /><br /><br />
+            <p class="lead text-center">
+                <a class="btn btn-primary btn-lg" asp-action="AddRating" asp-route-storyText="@story.Text" role="button">Rate This Story</a>
+            </p>
+        </div>
     }
-    <br />
-    <a asp-action="AddStory">Add Your Own Story About Mahler</a>
 </div>

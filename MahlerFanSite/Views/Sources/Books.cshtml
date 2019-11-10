@@ -1,17 +1,24 @@
 ﻿@model List<Book>
+
 @{
     ViewData["Title"] = "Books";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Mahler Books</h1>
-    <p>Below are some great books about Gustav Mahler:-</p>
+<h1 class="display-5">Books About Mahler</h1>
+<p class="lead">Below are some great books about Gustav Mahler.</p>
+<div style="margin-bottom: 20px; background-color: beige; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
     @foreach (Book book in Model)
     {
-        @book.Title<br/>
-        @book.PublishedDate<br/>
-        @book.BookId<br/><br/>
+    <div class="lead" style="margin-bottom: 20px; background-color: #fff0ff; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+        <em>Title:</em><br />@book.Title<br/>
+        <hr class="my-4">
+        <em>Date Published:</em><br />@book.PublishedDate.ToString("dddd, dd MMMM yyyy")<br/>
+        <hr class="my-4">
+        <em>Book ID: </em>@book.BookId<br/>
+    </div>
     }
-    <br/>
-    <a asp-action="AddBook">Add New Book</a>
 </div>
+
+<p class="lead text-center">
+    <a class="btn btn-primary btn-lg" asp-action="AddBook" role="button">Add Book</a>
+</p>

@@ -1,17 +1,21 @@
 ﻿@model String
+
 @{
     Layout = "_Form";
-    ViewData["Title"] = "AddComment";
+    ViewData["Title"] = "Comment A Story";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Add Comment for <em>@Model</em></h1>
+<h1 class="display-5">Comment A Story</h1>
+<p class="lead">Add a comment for "<em>@Model</em>"</p>
 
-    <form method="post">
-        <label for="text">Your comment about this story</label>
-        <input name="text" />
-        <label for="name">Your name</label>
-        <input name="name" />
-        <input type="submit" value="Add" />
-    </form>
-</div>
+<form method="post">
+    <div class="form-group">
+        <label class="col-form-label" for="text">Your comment about this story</label>
+        <input name="text" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label class="col-form-label" for="name">Your name</label>
+        <input name="name" type="text" class="form-control">
+    </div>
+    <input type="submit" class="btn btn-primary btn-lg" value="Add Comment"/>
+</form>

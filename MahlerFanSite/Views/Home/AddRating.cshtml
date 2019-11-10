@@ -1,15 +1,46 @@
 ﻿@model String
+
 @{
     Layout = "_Form";
-    ViewData["Title"] = "AddRating";
+    ViewData["Title"] = "Rate A Story";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Add Rating for <em>@Model</em></h1>
+<h1 class="display-5">Rate A Story</h1>
+<p class="lead">Add a rating for "<em>@Model</em>"</p>
 
-    <form method="post">
-        <label for="rating">How many stars do you want to give to this story?</label>
-        <input name="rating" />
-        <input type="submit" value="Add" />
-    </form>
-</div>
+<form method="post">
+    <fieldset class="form-group" style="background-color: #eeffff; margin: 10px; padding: 20px" >
+        <legend>Stars Awarded</legend>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="rating" value="1">
+                1 Star
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="rating" value="2">
+                2 Stars
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="rating" value="3">
+                3 Stars
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="rating" value="4">
+                4 Stars
+            </label>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="rating" value="5">
+                5 Stars
+            </label>
+        </div>
+    </fieldset>
+    <input type="submit" class="btn btn-primary btn-lg" value="Rate Story"/>
+</form>
