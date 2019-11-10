@@ -6,10 +6,10 @@
 
 <h1 class="display-5">Stories About Mahler</h1>
 <p class="lead">Below are some great stories about Gustav Mahler.</p>
-<div style="margin-bottom: 20px; background-color: beige; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+<div class="my-shadow" style="margin-bottom: 20px; background-color: beige; padding: 20px">
     @foreach (Story story in Model)
     {
-        <div class="lead" style="margin-bottom: 20px; background-color: #fff0ff; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+        <div class="lead my-shadow" style="margin-bottom: 20px; background-color: #fff0ff; padding: 20px">
             <em>Story:</em><br />@story.Text<br />
             <hr class="my-4">
             <em>Date of story:</em><br />@story.PublishedDate.ToString("dddd, dd MMMM yyyy")<br />
