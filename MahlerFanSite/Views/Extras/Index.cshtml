@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Extras";
+}
+
+<h1 class="display-5">ASP.NET</h1>
+<p class="lead">This website has been built with Microsoft's ASP.NET Core.</p>
+<div class="my-shadow" style="margin-bottom: 20px; background-color: beige; padding: 20px">
+    <p>Below is the use of the Redirect() method, which returns the RedirectResult type. </p>
+    <form method="post">
+        <fieldset class="form-group" style="background-color: #eeffff; margin: 10px; padding: 20px">
+            <legend>Which website would you like to visit?</legend>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="url" value="https://www.bbc.com">
+                    BBC
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="url" value="https://www.cnn.com">
+                    CNN
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="url" value="https://www.google.com">
+                    Google
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="url" value="https://www.lanecc.edu/">
+                    Lane Community College
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="url" value="https://en.wikipedia.org/wiki/Main_Page">
+                    Wikipedia
+                </label>
+            </div>
+        </fieldset>
+        <input type="submit" class="btn btn-primary btn-lg" value="Go There" />
+    </form>
+</div>
+
+<div class="my-shadow" style="margin-bottom: 20px; background-color: beige; padding: 20px">
+    <p>Below is the use of the Redirect() method, which returns the RedirectResult type. If you click the link below, then you will go to a page which is blank. However, if you open the developer tools, then you will see a 400 status code which means "bad request".</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" asp-action="Bad" role="button">Bad Request</a>
+    </p>
+</div>
+
+<div class="my-shadow" style="margin-bottom: 20px; background-color: beige; padding: 20px">
+    <p>Below is the use of the Json() method, which returns the JsonResult type. If you click the link below, then you will go to a page which returns this object.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" asp-action="Json" role="button">Get JSON</a>
+    </p>
+</div>
+
+<div class="my-shadow" style="margin-bottom: 20px; background-color: beige; padding: 20px">
+    <p>In my final example I will simply return a string.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" asp-action="GetString" role="button">Get String</a>
+    </p>
+</div>
+
+<div class="my-shadow" style="margin-bottom: 20px; background-color: beige; padding: 20px">
+    <p>In the above, I used three new controller methods and four new return types. Therefore, the requirements of Part II of Lab 6 are met. Thank you.</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" asp-controller="Home" asp-action="Index" role="button">Go Home</a>
+    </p>
+</div>
