@@ -6,46 +6,48 @@
 <p class="lead">This website has been built with Microsoft's ASP.NET Core.</p>
 <div class="my-shadow" style="margin-bottom: 20px; background-color: beige; padding: 20px">
     <p>Below is the use of the Redirect() method, which returns the RedirectResult type. </p>
-    <form method="post">
-        <fieldset class="form-group" style="background-color: #eeffff; margin: 10px; padding: 20px">
-            <legend>Which website would you like to visit?</legend>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="url" value="https://www.bbc.com">
-                    BBC
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="url" value="https://www.cnn.com">
-                    CNN
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="url" value="https://www.google.com">
-                    Google
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="url" value="https://www.lanecc.edu/">
-                    Lane Community College
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="url" value="https://en.wikipedia.org/wiki/Main_Page">
-                    Wikipedia
-                </label>
-            </div>
-        </fieldset>
-        <input type="submit" class="btn btn-primary btn-lg" value="Go There" />
-    </form>
+    <div style="margin-top: 50px ;background-color: #eeffff; margin: 10px; padding: 20px">
+        <form method="post">
+            <fieldset class="form-group">
+                <legend>Which website would you like to visit?</legend>
+                <div class="form-check" style="margin-bottom: 5px">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="url" value="https://www.bbc.com">
+                        BBC
+                    </label>
+                </div>
+                <div class="form-check" style="margin-bottom: 5px">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="url" value="https://www.cnn.com">
+                        CNN
+                    </label>
+                </div>
+                <div class="form-check" style="margin-bottom: 5px">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="url" value="https://www.google.com">
+                        Google
+                    </label>
+                </div>
+                <div class="form-check" style="margin-bottom: 5px">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="url" value="https://www.lanecc.edu/">
+                        Lane Community College
+                    </label>
+                </div>
+                <div class="form-check" style="margin-bottom: 5px">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="url" value="https://en.wikipedia.org/wiki/Main_Page">
+                        Wikipedia
+                    </label>
+                </div>
+            </fieldset>
+            <input type="submit" class="btn btn-primary btn-lg" value="Go There" />
+        </form>
+    </div>
 </div>
 
 <div class="my-shadow" style="margin-bottom: 20px; background-color: beige; padding: 20px">
-    <p>Below is the use of the Redirect() method, which returns the RedirectResult type. If you click the link below, then you will go to a page which is blank. However, if you open the developer tools, then you will see a 400 status code which means "bad request".</p>
+    <p>Below is the use of the BadRequest() method, which returns the BadRequestResult type. If you click the link below, then you will go to a page which is blank. However, if you open the developer tools, then you will see a 400 status code which means "bad request".</p>
     <p class="lead">
         <a class="btn btn-primary btn-lg" asp-action="Bad" role="button">Bad Request</a>
     </p>
