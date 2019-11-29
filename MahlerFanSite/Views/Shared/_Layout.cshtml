@@ -64,7 +64,12 @@
 
     <footer class="text-muted text-center" style="padding-bottom: 20px">
         <div class="container">
-            &copy; 2019 Mahler Fans - @ViewBag.Title
+            <environment include="Development">
+                &copy; 2019 Mahler Fans - @ViewBag.Title (Development Environment)
+            </environment>
+            <environment exclude="Development">
+                &copy; 2019 Mahler Fans - @ViewBag.Title
+            </environment>
         </div>
     </footer>
 
