@@ -32,14 +32,13 @@ namespace MahlerFanSite.Controllers
         public IActionResult AddStory() => View();
 
         [HttpPost]
-        public RedirectToActionResult AddStory(string text, string pubDate, string storyId)
+        public RedirectToActionResult AddStory(string text, string pubDate)
         {
             ViewBag.FormType = "Add a story";
             Story story = new Story
             {
                 Text = text,
-                PublishedDate = DateTime.Parse(pubDate),
-                StoryId = Int32.Parse(storyId)
+                PublishedDate = DateTime.Parse(pubDate)
             };
             _repository.AddStory(story);
             return RedirectToAction("Stories");

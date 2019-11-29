@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -31,6 +32,9 @@ namespace MahlerFanSite
 
             // I added this line for dependency injection
             services.AddTransient<IRepository, StoryRepository>();
+
+            // I added this line for EF Database implementation
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SmarterASP"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
