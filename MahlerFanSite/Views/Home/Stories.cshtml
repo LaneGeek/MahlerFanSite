@@ -34,11 +34,11 @@
             @if (story.Ratings.IsNotEmpty())
             {
                 <hr class="my-4">
-                <p>This story has a total of @story.Ratings.Count ratings with an average rating of @story.Ratings.Average() stars:-</p>
-                @foreach (int rating in story.Ratings)
+                <p>This story has a total of @story.Ratings.Count ratings with an average rating of (story.Ratings.Average()) stars:-</p>
+                @foreach (Rating rating in story.Ratings)
                 {
                     <p class="text-primary">
-                        @rating Stars
+                        @rating.Score Stars
                     </p>
                 }
             }

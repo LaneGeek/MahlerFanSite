@@ -74,34 +74,6 @@ namespace MahlerFanSite.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Reviews",
-                columns: table => new
-                {
-                    ReviewId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ReviewText = table.Column<string>(nullable: true),
-                    ReviewerUserId = table.Column<int>(nullable: true),
-                    ReviewDate = table.Column<DateTime>(nullable: false),
-                    BookId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reviews", x => x.ReviewId);
-                    table.ForeignKey(
-                        name: "FK_Reviews_Books_BookId",
-                        column: x => x.BookId,
-                        principalTable: "Books",
-                        principalColumn: "BookId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Reviews_Users_ReviewerUserId",
-                        column: x => x.ReviewerUserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Stories",
                 columns: table => new
                 {
@@ -130,16 +102,71 @@ namespace MahlerFanSite.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Text = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    StoryId = table.Column<int>(nullable: true)
+                    RevStoryStoryId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.CommentId);
                     table.ForeignKey(
-                        name: "FK_Comments_Stories_StoryId",
+                        name: "FK_Comments_Stories_RevStoryStoryId",
+                        column: x => x.RevStoryStoryId,
+                        principalTable: "Stories",
+                        principalColumn: "StoryId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rating",
+                columns: table => new
+                {
+                    RatingId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Score = table.Column<int>(nullable: false),
+                    StoryId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rating", x => x.RatingId);
+                    table.ForeignKey(
+                        name: "FK_Rating_Stories_StoryId",
                         column: x => x.StoryId,
                         principalTable: "Stories",
                         principalColumn: "StoryId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    ReviewId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ReviewText = table.Column<string>(nullable: true),
+                    ReviewerUserId = table.Column<int>(nullable: true),
+                    ReviewDate = table.Column<DateTime>(nullable: false),
+                    ReviewStoryStoryId = table.Column<int>(nullable: true),
+                    BookId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.ReviewId);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Books_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Books",
+                        principalColumn: "BookId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Stories_ReviewStoryStoryId",
+                        column: x => x.ReviewStoryStoryId,
+                        principalTable: "Stories",
+                        principalColumn: "StoryId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Users_ReviewerUserId",
+                        column: x => x.ReviewerUserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -149,14 +176,24 @@ namespace MahlerFanSite.Migrations
                 column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_StoryId",
+                name: "IX_Comments_RevStoryStoryId",
                 table: "Comments",
+                column: "RevStoryStoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rating_StoryId",
+                table: "Rating",
                 column: "StoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_BookId",
                 table: "Reviews",
                 column: "BookId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reviews_ReviewStoryStoryId",
+                table: "Reviews",
+                column: "ReviewStoryStoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_ReviewerUserId",
@@ -181,13 +218,16 @@ namespace MahlerFanSite.Migrations
                 name: "Links");
 
             migrationBuilder.DropTable(
+                name: "Rating");
+
+            migrationBuilder.DropTable(
                 name: "Reviews");
 
             migrationBuilder.DropTable(
-                name: "Stories");
+                name: "Books");
 
             migrationBuilder.DropTable(
-                name: "Books");
+                name: "Stories");
 
             migrationBuilder.DropTable(
                 name: "Users");

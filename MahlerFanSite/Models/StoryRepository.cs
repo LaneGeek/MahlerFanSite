@@ -9,11 +9,25 @@ namespace MahlerFanSite.Models
     {
         private AppDbContext context;
 
-        public List<Story> Stories => context.Stories.Include("Comments").ToList();
+        public List<Story> Stories => context.Stories.Include("Comments").Include("Ratings").ToList();
 
         public void AddStory(Story story)
         {
             context.Stories.Add(story);
+            context.SaveChanges();
+        }
+
+        public void AddComment(Story story, Comment comment)
+        {
+            story.Comments.Add(comment);
+            context.Stories.Update(story);
+            context.SaveChanges();
+        }
+
+        public void AddRating(Story story, Rating rating)
+        {
+            story.Ratings.Add(rating);
+            context.Stories.Update(story);
             context.SaveChanges();
         }
 

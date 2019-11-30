@@ -11,7 +11,7 @@ namespace MahlerFanSite.Controllers
         private readonly IRepository _repository;
 
         public HomeController(IRepository repository) => this._repository = repository;
-        
+
         public IActionResult Index()
         {
             // Using ViewBag to send today's date
@@ -49,9 +49,8 @@ namespace MahlerFanSite.Controllers
         [HttpPost]
         public RedirectToActionResult AddComment(string storyText, string text, string name)
         {
-            Comment comment = new Comment {Text = text, Name = name};
             Story story = _repository.GetStoryByText(storyText);
-            story.AddComment(comment);
+            _repository.AddComment(story, new Comment {Text = text, Name = name});
             return RedirectToAction("Stories");
         }
 
@@ -61,7 +60,7 @@ namespace MahlerFanSite.Controllers
         public RedirectToActionResult AddRating(string storyText, string rating)
         {
             Story story = _repository.GetStoryByText(storyText);
-            story.AddRating(Int32.Parse(rating));
+            _repository.AddRating(story, new Rating {Score = Int32.Parse(rating)});
             return RedirectToAction("Stories");
         }
     }

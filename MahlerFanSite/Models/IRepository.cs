@@ -8,6 +8,10 @@ namespace MahlerFanSite.Models
 
         void AddStory(Story story);
 
+        void AddComment(Story story, Comment comment);
+
+        void AddRating(Story story, Rating rating);
+
         Story GetStoryByText(string text);
     }
 }

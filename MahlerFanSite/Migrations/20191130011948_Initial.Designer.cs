@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MahlerFanSite.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191129221051_Initial")]
+    [Migration("20191130011948_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,13 +65,13 @@ namespace MahlerFanSite.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("StoryId");
+                    b.Property<int?>("RevStoryStoryId");
 
                     b.Property<string>("Text");
 
                     b.HasKey("CommentId");
 
-                    b.HasIndex("StoryId");
+                    b.HasIndex("RevStoryStoryId");
 
                     b.ToTable("Comments");
                 });
@@ -91,6 +91,23 @@ namespace MahlerFanSite.Migrations
                     b.ToTable("Links");
                 });
 
+            modelBuilder.Entity("MahlerFanSite.Models.Rating", b =>
+                {
+                    b.Property<int>("RatingId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Score");
+
+                    b.Property<int?>("StoryId");
+
+                    b.HasKey("RatingId");
+
+                    b.HasIndex("StoryId");
+
+                    b.ToTable("Rating");
+                });
+
             modelBuilder.Entity("MahlerFanSite.Models.Review", b =>
                 {
                     b.Property<int>("ReviewId")
@@ -101,6 +118,8 @@ namespace MahlerFanSite.Migrations
 
                     b.Property<DateTime>("ReviewDate");
 
+                    b.Property<int?>("ReviewStoryStoryId");
+
                     b.Property<string>("ReviewText");
 
                     b.Property<int?>("ReviewerUserId");
@@ -108,6 +127,8 @@ namespace MahlerFanSite.Migrations
                     b.HasKey("ReviewId");
 
                     b.HasIndex("BookId");
+
+                    b.HasIndex("ReviewStoryStoryId");
 
                     b.HasIndex("ReviewerUserId");
 
@@ -159,8 +180,15 @@ namespace MahlerFanSite.Migrations
 
             modelBuilder.Entity("MahlerFanSite.Models.Comment", b =>
                 {
-                    b.HasOne("MahlerFanSite.Models.Story")
+                    b.HasOne("MahlerFanSite.Models.Story", "RevStory")
                         .WithMany("Comments")
+                        .HasForeignKey("RevStoryStoryId");
+                });
+
+            modelBuilder.Entity("MahlerFanSite.Models.Rating", b =>
+                {
+                    b.HasOne("MahlerFanSite.Models.Story")
+                        .WithMany("Ratings")
                         .HasForeignKey("StoryId");
                 });
 
@@ -169,6 +197,10 @@ namespace MahlerFanSite.Migrations
                     b.HasOne("MahlerFanSite.Models.Book")
                         .WithMany("Reviews")
                         .HasForeignKey("BookId");
+
+                    b.HasOne("MahlerFanSite.Models.Story", "ReviewStory")
+                        .WithMany()
+                        .HasForeignKey("ReviewStoryStoryId");
 
                     b.HasOne("MahlerFanSite.Models.User", "Reviewer")
                         .WithMany()
