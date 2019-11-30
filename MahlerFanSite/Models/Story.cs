@@ -14,8 +14,5 @@ namespace MahlerFanSite.Models
         public User Author { get; set; }
         public List<Comment> Comments => _comments;
         public List<Rating> Ratings => _ratings;
-
-        public void AddComment(Comment comment) => Comments.Add(comment);
-        public void AddRating(Rating rating) => Ratings.Add(rating);
     }
 }
